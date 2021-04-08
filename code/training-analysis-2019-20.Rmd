@@ -5,7 +5,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
+ output_file=file.path("/Users/cameronisaacs-trepanier/Triathlon", out_dir, 'triathlon-analysis-2019-20.html'))})
 output:
   html_document:
     df_print: paged
@@ -22,7 +22,7 @@ output:
 </style>
 <br>
 <center>
-![](swim-bike-run.png) 
+![](/Users/cameronisaacs-trepanier/Triathlon/media/swim-bike-run.png) 
 </center>
 <br>
 ```{r, collapse=TRUE, message=FALSE, error=FALSE, warning=FALSE}
@@ -32,7 +32,7 @@ library(lubridate)
 library(viridisLite)
 library(RColorBrewer)
 
-workouts <- read_csv("workouts.csv", na = "NA")
+workouts <- read_csv("~/Triathlon/data/workouts-2019-20.csv", na = "NA")
 
 #remove cols not needed
 workouts <- workouts %>%
