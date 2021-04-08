@@ -5,7 +5,7 @@ knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path("/Users/cameronisaacs-trepanier/Triathlon", out_dir, 'triathlon-analysis-2019-20.html'))})
+ output_file=file.path("/Users/cameronisaacs-trepanier/Triathlon", out_dir, 'index.html'))})
 output:
   html_document:
     df_print: paged
