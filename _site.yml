@@ -1,0 +1,14 @@
+name: "triathlon"
+output_dir: "docs"
+navbar:
+  title: "Triathlon Analyses"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "2019-2020"
+      href: training-analysis-2019-20.html
+output:
+  html_document:
+    theme: cosmo
+    df_print: paged
+    code_folding: hide
