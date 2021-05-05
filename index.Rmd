@@ -15,8 +15,6 @@ library(viridisLite)
 library(RColorBrewer)
 
 workouts <- read_csv("./data/workouts-2019-20.csv", na = "NA")
-
-cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 ```
 
 Two things I love are triathlon and data. What you will find here is combination of the two where I take my triathlon data and analyze it to get interesting insights into my training. Triathlon consists of three sports done back-to-back, where your transition between each sport counts towards your overall finish time – usually! The three sports done in order are swimming, biking, and running. Largely, triathlon is considered an endurance sport. However, the distances can vary depending on the kind of triathlon you are doing. For example, a sprint triathlon is a 700 meter swim, 20 km bike ride, and a 5 km run. This takes most people over an hour to complete. On the other side of the spectrum, you have an Ironman. This consists of a 3.8 km swim, 180 km bike ride, and a 42.2 km run (that is a full marathon!!!). A full Ironman can take up to 17 hours for people to complete. You will need some endurance athletics regardless of the distances you do.  
@@ -37,7 +35,7 @@ Heart rate is perhaps the most cited metric among triathletes, and for good reas
 
 #### *Power*  
 For me, power is restricted to bike workouts. It is measure in watts, and it represents the actual work your body is putting out (not just an indicator of how much work you are doing). Unlike heart rate, power cannot be “artificially” altered by things like outside temperature or hydration. Your power output is a direct measure of your body’s work for a given workout. However, power is unique to your body composition. A lighter person does not need the same amount of power as a heavier person to go the same speed on the same course under the same conditions. Therefore, you must use watts per unit of weight (watts/kg usually) if you are going to compare someone’s power data to reference data (whether it’s a table or other people’s power data). Similar to heart rate, power can be divided into zones based on your functional threshold power (FTP). You can obtain FTP by taking 95% of your average power of a 20 minute all out test on the bike. The zones fall into similar categories as the heart rate zones. Zone 2 is considered aerobic (or often called base). Zone 3 is usually race effort. Anything above that will help improve your muscle strength and anaerobic fitness. The downside to power is that your zones are not fixed. They are not fixed because your FTP can fluctuate based on your fitness. Higher FTPs are a sign of greater fitness, as is being able to hold a certain power output for longer.  
-```{r}
+```{r, fig.align = 'center', collapse=TRUE, message=FALSE, error=FALSE, warning=FALSE}
 workouts %>%
   filter(WorkoutType == "Bike") %>%
   ggplot(aes(PowerAverage, HeartRateAverage)) +
@@ -51,7 +49,7 @@ workouts %>%
 
 #### *Velocity*  
 Velocity is measured in meters/second. I convert velocity into speed or pace based on the commonly used metric in a given sport. I use seconds per 100 meters for swimming (sec/100m), kilometers per hour (km/h) for biking, and minutes per kilometer (min/km) for running. These are great for testing how well you are progressing towards your target paces or finish time. However, they have very limited uses outside of that. That is because velocity can be greatly impacted by factors outside your fitness. The number and steepness of hills on your course, the wind conditions, the number of traffic lights, and the terrain are all things outside your fitness that can impact your velocity. Therefore, velocity has very little association to your actual fitness. That is why I only use it for exploratory analyses and to report race results.  
-```{r, fig.show='hold', out.width='50%'}
+```{r, fig.show='hold', out.width='50%', collapse=TRUE, message=FALSE, error=FALSE, warning=FALSE}
 workouts %>%
   filter(WorkoutType == "Bike") %>%
   ggplot(aes(PowerAverage, VelocityAverage)) +
@@ -74,8 +72,8 @@ workouts %>%
 ```
 
 #### *Cadence*  
-Cadence applies to both biking and running. For biking, it is the number of pedal revolutions per minute (rpm). Higher cadence on the bike is associated with greater rotational force, which can increase your power. However, there is a tipping point where too high a cadence leads to diminishing gains in power and a less efficient pedal stroke (it would make more sense to change into a higher gear at this point). Experts have recommended a cadence between 85-100 rpm to maximize the benefits of cadence. For running, cadence is the number of steps per minute (spm). Experts say increasing your cadence can pay dividends to your running efficiency. However, spm is highly correlated to your pace – faster paces are associated with higher cadences. That is why you will see more experienced runners turning their feet over like Bugs Bunny. Therefore, changes in cadence could mean you are becoming more efficient, you are getting faster, or both (this is the most likely explanation)!  
-```{r}
+Cadence applies to both biking and running. For biking, it is the number of pedal revolutions per minute (rpm). Higher cadence on the bike is associated with greater rotational force, which can increase your power. However, there is a tipping point where too high a cadence leads to diminishing gains in power and a less efficient pedal stroke (it would make more sense to change into a higher gear at this point). Experts have recommended a cadence between 85-100 rpm to maximize the benefits of cadence. For running, cadence is the number of steps per minute (spm). Experts say increasing your cadence can pay dividends to your running efficiency. However, spm is highly correlated to your pace – faster paces are associated with higher cadences (figure below). That is why you will see more experienced runners turning their feet over like Bugs Bunny. Therefore, changes in cadence could mean you are becoming more efficient, you are getting faster, or both (this is the most likely explanation)!  
+```{r, fig.align = 'center', collapse=TRUE, message=FALSE, error=FALSE, warning=FALSE}
 workouts %>%
   filter(WorkoutType == "Run") %>%
   ggplot(aes(CadenceAverage, VelocityAverage)) +
