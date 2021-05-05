@@ -15,8 +15,6 @@ library(viridisLite)
 library(RColorBrewer)
 
 workouts <- read_csv("./data/workouts-2019-20.csv", na = "NA")
-
-cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 ```
 
 Two things I love are triathlon and data. What you will find here is combination of the two where I take my triathlon data and analyze it to get interesting insights into my training. Triathlon consists of three sports done back-to-back, where your transition between each sport counts towards your overall finish time – usually! The three sports done in order are swimming, biking, and running. Largely, triathlon is considered an endurance sport. However, the distances can vary depending on the kind of triathlon you are doing. For example, a sprint triathlon is a 700 meter swim, 20 km bike ride, and a 5 km run. This takes most people over an hour to complete. On the other side of the spectrum, you have an Ironman. This consists of a 3.8 km swim, 180 km bike ride, and a 42.2 km run (that is a full marathon!!!). A full Ironman can take up to 17 hours for people to complete. You will need some endurance athletics regardless of the distances you do.  
